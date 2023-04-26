@@ -13,6 +13,13 @@
       "username": "manny22",
       "email": "manny@gmail.com",
       "password": "54321"
+    },
+    {
+      "name": "gera",
+      "username": "gera1",
+      "email": "gera@gmail.com",
+      "password": "qwe",
+      "id": 3
     }
   ]
 }

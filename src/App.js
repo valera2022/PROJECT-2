@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:8000/data")
       .then(r => r.json())
-      .then((data) => data.map((dat)=>setState(dat)))
+      .then((data) => setState(data))
 }, [])
 console.log(state)
   return (

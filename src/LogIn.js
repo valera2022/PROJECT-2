@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 
 function LogIn({state}) {
   console.log(state)
+  
    
    const history = useHistory()
     const [username,setUser]= useState("")
@@ -19,15 +20,28 @@ function LogIn({state}) {
 
     function handleSubmit(e){
         e.preventDefault()
-     if(state.username === username){
+       
+      state.map((account)=>{
+        if(account.username === username){
+        fetch(`http://localhost:8000/data/${account.id}` )
+      .then((r)=>  r.json())
+    .then((data)=>{
+      if(password === null || password === ""){
+          toast.warn("password field should not be empty")}
+        else if(password !== data.password){
+          toast.warn("Wrong Password")
+        }
+        else{
+            history.push("/")
+
+          }
+
+      })}
       
-      fetch("http://localhost:8000/data/"+username )
-      .then((r)=> {return r.json()})
-    .then(data=>{ 
-      return console.log(data.name)})
+      
 
-
-     }
+      
+      })
           // if(password === null || password === ""){
           //   toast.warn("password field should not be empty")}
           // else if(password !== data.password){
@@ -63,7 +77,7 @@ function LogIn({state}) {
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
           <div>
-            <input type="text" value={username} name="username" placeholder="Username" onChange={e=> setUser(e.target.value)} />
+            <input type="text"  value={username} name="username" placeholder="Username" onChange={e=> setUser(e.target.value)} />
           </div>
           <div>
             <input type="password" value={password}name="password" placeholder="Password" onChange={e=> setPass(e.target.value)}/>
