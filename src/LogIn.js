@@ -9,14 +9,18 @@ function LogIn({state}) {
      console.log(username)
      console.log(password)
 
-    state.forEach((data)=>{
-        console.log( data.username)
+    // state.forEach((data)=>{
+    //     console.log( data.username)
         
-    })
+    // })
 
     function handleSubmit(e){
         e.preventDefault()
-      
+    
+          fetch("http://localhost:3000/" + username)
+          .then(r=> r.json())
+        .then(data=>{console.log(data)})
+        
         
         
         console.log(e.target.username.value)
