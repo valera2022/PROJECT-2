@@ -5,9 +5,9 @@ import { NavLink } from "react-router-dom";
 function NavBar() {
     const style ={
  display: "inline-block",
-  width: "50px",
-  padding: "20px",
-  margin: "0 20px 20px",
+  width: "60px",
+  padding: "10px",
+  margin: "0 10px 10px",
   background: "blue",
   textDecoration: "none",
   color: "white",
