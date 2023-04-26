@@ -1,13 +1,16 @@
 import React from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 function LogIn({state}) {
-    console.log(state)
-
+  console.log(state)
+   
+   const history = useHistory()
     const [username,setUser]= useState("")
      const [password,setPass]= useState("")
-     console.log(username)
-     console.log(password)
+    //  console.log(username)
+    //  console.log(password)
 
     // state.forEach((data)=>{
     //     console.log( data.username)
@@ -16,10 +19,25 @@ function LogIn({state}) {
 
     function handleSubmit(e){
         e.preventDefault()
-    
-          fetch("http://localhost:3000/" + username)
-          .then(r=> r.json())
-        .then(data=>{console.log(data)})
+     if(state.username === username){
+      
+      fetch("http://localhost:8000/data/"+username )
+      .then((r)=> {return r.json()})
+    .then(data=>{ 
+      return console.log(data.name)})
+
+
+     }
+          // if(password === null || password === ""){
+          //   toast.warn("password field should not be empty")}
+          // else if(password !== data.password){
+          //   toast.warn("Wrong Password")
+          // }
+          // else{
+          //   history.push("/home")
+
+          // }
+         
         
         
         
