@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function LogIn({state}) {
   console.log(state)
@@ -74,6 +76,7 @@ function LogIn({state}) {
     
     return (
       <div>
+        <>
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
           <div>
@@ -82,8 +85,9 @@ function LogIn({state}) {
           <div>
             <input type="password" value={password}name="password" placeholder="Password" onChange={e=> setPass(e.target.value)}/>
           </div>
-          <input type="submit" value="Submit" />
+          <Button variant="dark" as="input" type="submit" value="Submit" />
         </form>
+        </>
       </div>
     );
   }
